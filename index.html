@@ -5,35 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/overlays.css" />
+    <link rel="stylesheet" href="styles/configuration.css" />
+    <link rel="stylesheet" href="styles/game.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
-      rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
+        rel="stylesheet"
     />
     <script src="script.js" defer></script>
     <title>Tic Tac Toe Game</title>
   </head>
+
   <body>
-    <header>
+    <div id="back-drop"></div>
+
+    <header id="main-header">
       <h1>play Tic, Tac, Toe</h1>
-      <p>
-        Bult with html , css and javascript and - of course - lots of love !
-      </p>
+      <p>Built with html , CSS , JavaScript and - of course - lots of love !</p>
     </header>
     <main>
-      <aside>
+      <aside class="modal" id="config-overlay">
         <h2>Chose Your Name</h2>
-        <div>
-          <form>
+        <form>
+          <div class="form-control">
             <label for="playerName">Player Name</label>
             <input type="text" name="playerName" id="playerName" />
-          </form>
-        </div>
-        <div>
-          <button type="button">Cancle</button>
-          <button type="submit">Confirm</button>
-        </div>
+          </div>
+          <div>
+            <button type="button" class="btn btn-alt">Cancle</button>
+            <button type="submit" class="btn">Confirm</button>
+          </div>
+        </form>
       </aside>
       <section id="game-configuration">
         <ol>
@@ -41,30 +45,30 @@
             <article>
               <h2>player 1</h2>
               <h3>player name</h3>
-              <p>X</p>
-              <button>Edit</button>
+              <p class="player-symbol">X</p>
+              <button class="btn btn-alt">Edit</button>
             </article>
           </li>
           <li>
             <article>
               <h2>player 2</h2>
               <h3>player name</h3>
-              <p>O</p>
-              <button>Edit</button>
+              <p class="player-symbol">O</p>
+              <button class="btn btn-alt">Edit</button>
             </article>
           </li>
         </ol>
-        <button>Start New Game</button>
+        <button class="btn">Start New Game</button>
       </section>
 
       <section id="active-game">
-        <article>
-          <h3>You Win! , <span id="winner-name">Player Name</span>!</h3>
+        <article id="game-over">
+          <h2>You Win! , <span id="winner-name">Player Name</span>!</h2>
           <p>Click "Start New Game" above, to Start a New Game!</p>
         </article>
 
         <p>it's your turn <span id="active-player-name">Player Name</span> !</p>
-        <ol>
+        <ol id="game-bord">
           <li></li>
           <li></li>
           <li></li>
