@@ -1,6 +1,7 @@
 function resetGameStatus() {
     activePlayer = 0;
     roundCounter = 0;
+    gameIsOver = false;
     gameOverElement.style.display = 'none';
 
     let gameFieldindex = 0;
@@ -15,7 +16,7 @@ function resetGameStatus() {
         }
 
     }
-}
+};
 
 
 function startNewGame() {
@@ -40,6 +41,9 @@ function swithPlayer() {
 };
 
 function selectGameField(event) {
+    if (gameIsOver) {
+        return;
+    };
     const selectedField = event.target;
     const selectedColumn = selectedField.dataset.col - 1;
     const selectedRow = selectedField.dataset.row - 1;
@@ -68,6 +72,7 @@ function gameWiner() {
             gameData[i][1] === gameData[i][2]) {
             gameOverElement.style.display = 'block';
             winnerNameElement.textContent = player[gameData[i][0] - 1].name;
+            gameIsOver = true;
         }
     }
     for (let i = 0; i < 3; i++) {
@@ -76,6 +81,7 @@ function gameWiner() {
             gameData[0][i] === gameData[2][i]) {
             gameOverElement.style.display = 'block';
             winnerNameElement.textContent = player[gameData[0][i] - 1].name;
+            gameIsOver = true;
         }
     }
     
@@ -84,15 +90,18 @@ function gameWiner() {
         gameData[1][1] === gameData[2][2])  {
         gameOverElement.style.display = 'block';
         winnerNameElement.textContent = player[gameData[0][0] - 1].name;
+        gameIsOver = true;
     }
     if (gameData[0][2] > 0 && 
         gameData[0][2] === gameData[1][1] &&
         gameData[1][1] === gameData[2][0]) {
         gameOverElement.style.display = 'block';
         winnerNameElement.textContent = player[gameData[0][2] - 1].name;
+        gameIsOver = true;
     }
     if (roundCounter == 9) {
         gameOverElement.style.display = 'block';
         gameOverElement.firstElementChild.textContent = "Nobody wins!";
+        gameIsOver = true;
     }
 };
